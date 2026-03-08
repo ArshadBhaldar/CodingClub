@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=IM+Fell+English:ital@0;1&display=swap');
 
 * {
   box-sizing: border-box;
@@ -15,47 +15,190 @@ html {
 }
 
 body {
-  background-color: #0B0B0E;
-  color: #F0F0F5;
-  font-family: 'Inter', sans-serif;
+  background-color: #0D0900;
+  background-image: url('/bg-castle.png');
+  background-attachment: scroll;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: repeat-y;
+  color: #F5E6C8;
+  font-family: 'IM Fell English', Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }
 
-/* Custom scrollbar */
+/* Dark overlay over the entire page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 0, 0.72);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* All page content sits above the overlay */
+body>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom scrollbar — gold theme */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #0B0B0E;
+  background: #0D0900;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #1E2433;
+  background: #4A3000;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #00BFFF;
+  background: #FFD700;
 }
 
-/* FAQ accordion styles */
-details > summary {
-  list-style: none;
-  cursor: pointer;
-}
-details > summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Noise texture overlay */
-.noise-overlay {
+/* ── Utility: Parchment card ── */
+.parchment-card {
+  background: linear-gradient(135deg, #2a1a00 0%, #1e1200 50%, #2a1a00 100%);
+  border: 1px solid #5a3e10;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(200, 169, 110, 0.06);
   position: relative;
 }
-.noise-overlay::before {
+
+.parchment-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 28px,
+      rgba(200, 169, 110, 0.03) 28px,
+      rgba(200, 169, 110, 0.03) 29px);
   pointer-events: none;
-  z-index: 0;
+  border-radius: inherit;
+}
+
+/* ── Utility: Velvet card ── */
+.velvet-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.velvet-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.02) 3px,
+      rgba(255, 255, 255, 0.02) 4px);
+  pointer-events: none;
+}
+
+/* ── Utility: Scroll button ── */
+.scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: linear-gradient(135deg, #3a2200, #2a1500);
+  border: 2px solid #FFD700;
+  color: #FFD700;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.scroll-btn::before,
+.scroll-btn::after {
+  content: '❧';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #FFD700;
+  opacity: 0.6;
+  font-size: 0.75rem;
+}
+
+.scroll-btn::before {
+  left: 0.5rem;
+}
+
+.scroll-btn::after {
+  right: 0.5rem;
+  content: '❧';
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.scroll-btn:hover {
+  background: linear-gradient(135deg, #4a2f00, #3a1e00);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  color: #FFF0A0;
+}
+
+/* ── Utility: Section label ── */
+.arcane-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.arcane-label::before,
+.arcane-label::after {
+  content: '';
+  height: 1px;
+  width: 2rem;
+  background: #FFD700;
+}
+
+/* ── FAQ accordion styles ── */
+details>summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── Quill input ── */
+.quill-input {
+  background: linear-gradient(135deg, #2a1a00, #1e1200);
+  border: 1px solid #5a3e10;
+  color: #F5E6C8;
+  font-family: 'IM Fell English', Georgia, serif;
+  padding: 0.625rem 1rem;
+  border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.quill-input::placeholder {
+  color: #8B6914;
+  font-style: italic;
+}
+
+.quill-input:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Cinzel heading helper */
+.cinzel {
+  font-family: 'Cinzel', Georgia, serif;
+  color: #FFD700;
+  letter-spacing: 0.05em;
 }

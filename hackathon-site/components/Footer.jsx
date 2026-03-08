@@ -43,21 +43,18 @@ export default function Footer() {
     const [email, setEmail] = useState('');
 
     return (
-        <footer className="border-t border-border" style={{ background: '#0D0F14' }}>
+        <footer className="border-t border-[#4A3000]" style={{ background: 'rgba(10,5,0,0.92)' }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
                     {/* Left — Logo + tagline + socials */}
                     <div>
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-7 h-7 bg-primary rounded flex items-center justify-center flex-shrink-0">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M2 4L6 8L2 12" stroke="#0B0B0E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M8 12H14" stroke="#0B0B0E" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </div>
-                            <span className="font-bold text-white text-sm tracking-wider">CODECRAFTERS</span>
+                            <span className="text-[#FFD700] text-xl" aria-hidden="true">⚡</span>
+                            <span className="font-cinzel font-bold text-[#FFD700] text-sm tracking-widest">
+                                CODECRAFTERS
+                            </span>
                         </div>
-                        <p className="text-sm text-muted leading-relaxed mb-6 max-w-xs">
+                        <p className="text-sm text-[#A08040] leading-relaxed mb-6 max-w-xs font-serif">
                             Empowering the next generation of engineers to build meaningful digital solutions.
                             Founded by the University Coding Club.
                         </p>
@@ -67,7 +64,8 @@ export default function Footer() {
                                     key={social.label}
                                     href={social.href}
                                     aria-label={social.label}
-                                    className="w-8 h-8 rounded bg-surface border border-border flex items-center justify-center text-muted hover:border-primary hover:text-primary transition-all duration-200"
+                                    className="w-8 h-8 rounded border border-[#4A3000] flex items-center justify-center text-[#6B5030] hover:border-[#FFD700] hover:text-[#FFD700] transition-all duration-200"
+                                    style={{ background: 'rgba(255,215,0,0.03)' }}
                                 >
                                     {social.icon}
                                 </a>
@@ -77,7 +75,7 @@ export default function Footer() {
 
                     {/* Center — Navigation */}
                     <div>
-                        <p className="text-xs font-mono font-bold tracking-widest text-white mb-5 uppercase">
+                        <p className="text-xs font-cinzel font-bold tracking-widest text-[#FFD700] mb-5 uppercase">
                             Navigation
                         </p>
                         <ul className="flex flex-col gap-3">
@@ -85,7 +83,7 @@ export default function Footer() {
                                 <li key={link.label}>
                                     <a
                                         href={link.href}
-                                        className="text-sm text-muted hover:text-primary transition-colors duration-200"
+                                        className="text-sm text-[#A08040] hover:text-[#FFD700] transition-colors duration-200 font-serif"
                                     >
                                         {link.label}
                                     </a>
@@ -94,13 +92,13 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Right — Newsletter */}
+                    {/* Right — Newsletter styled as a quill scroll */}
                     <div>
-                        <p className="text-xs font-mono font-bold tracking-widest text-white mb-2 uppercase">
+                        <p className="text-xs font-cinzel font-bold tracking-widest text-[#FFD700] mb-2 uppercase">
                             Stay Updated
                         </p>
-                        <p className="text-sm text-muted mb-5">
-                            Get notified about upcoming workshops and events.
+                        <p className="text-sm text-[#A08040] mb-5 font-serif italic">
+                            Receive owls about upcoming workshops and events.
                         </p>
                         <form
                             onSubmit={(e) => {
@@ -109,36 +107,43 @@ export default function Footer() {
                             }}
                             className="flex gap-2"
                         >
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="dev@example.com"
-                                className="flex-1 min-w-0 px-4 py-2.5 text-sm bg-surface border border-border rounded-lg text-white placeholder-muted focus:outline-none focus:border-primary transition-colors"
-                                required
-                            />
+                            <div className="relative flex-1 min-w-0">
+                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B5030] text-sm" aria-hidden="true">🪶</span>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="owl@example.com"
+                                    className="quill-input w-full pl-9 pr-3"
+                                    required
+                                />
+                            </div>
                             <button
                                 type="submit"
-                                className="px-4 py-2.5 bg-primary rounded-lg font-bold text-background text-xs hover:bg-primary-dark hover:shadow-glow-sm transition-all duration-200 whitespace-nowrap"
+                                className="scroll-btn text-xs py-2 px-4 whitespace-nowrap"
+                                style={{ fontSize: '0.7rem' }}
                             >
-                                SUB
+                                Join
                             </button>
                         </form>
                     </div>
                 </div>
 
                 {/* Bottom bar */}
-                <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <p className="text-xs text-muted/60 font-mono">
-                        © 2026 CODECRAFTERS. BUILT WITH ♥ IN NAVI MUMBAI.
+                <div className="mt-12 pt-6 border-t border-[#4A3000] flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <p className="text-xs text-[#4A3000] font-cinzel">
+                        © 2026 CODECRAFTERS. FORGED WITH ♥ IN NAVI MUMBAI.
                     </p>
                     <div className="flex items-center gap-5">
-                        <a href="#" className="text-xs text-muted/60 font-mono hover:text-muted transition-colors">
+                        <a href="#" className="text-xs text-[#4A3000] font-cinzel hover:text-[#A08040] transition-colors">
                             PRIVACY POLICY
                         </a>
-                        <a href="#" className="text-xs text-muted/60 font-mono hover:text-muted transition-colors">
+                        <a href="#" className="text-xs text-[#4A3000] font-cinzel hover:text-[#A08040] transition-colors">
                             TERMS OF SERVICE
                         </a>
+                        <span className="text-xs text-[#4A3000] font-serif">
+                            🌟 Made with <a href="https://visily.ai" target="_blank" rel="noopener noreferrer" className="hover:text-[#A08040] transition-colors underline">Visily</a>
+                        </span>
                     </div>
                 </div>
             </div>

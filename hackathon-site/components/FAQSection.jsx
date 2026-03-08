@@ -28,34 +28,33 @@ function FAQItem({ question, answer }) {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="border-b border-border last:border-none">
+        <div className="border-b border-[#4A3000] last:border-none">
             <button
                 onClick={() => setOpen(!open)}
                 className="w-full flex items-center justify-between py-5 text-left group"
                 aria-expanded={open}
             >
-                <span className="font-mono font-semibold text-sm sm:text-base text-white/90 group-hover:text-primary transition-colors duration-200 pr-4">
+                <span className="font-serif text-sm sm:text-base text-[#F5E6C8] group-hover:text-[#FFD700] transition-colors duration-200 pr-4">
                     {question}
                 </span>
                 <div
-                    className={`flex-shrink-0 w-6 h-6 rounded-full border border-border flex items-center justify-center transition-all duration-300 ${open ? 'bg-primary border-primary rotate-45' : 'group-hover:border-primary/50'
+                    className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300 ${open
+                            ? 'bg-[#FFD700] border-[#FFD700]'
+                            : 'border-[#4A3000] group-hover:border-[#FFD700]/50'
                         }`}
                 >
-                    <svg
-                        className={`w-3 h-3 transition-colors ${open ? 'text-background' : 'text-muted'}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <span
+                        className={`text-xs font-bold transition-all duration-300 ${open ? 'text-[#0D0900] rotate-45 inline-block' : 'text-[#A08040]'}`}
                     >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
+                        ✦
+                    </span>
                 </div>
             </button>
             <div
                 className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-48 pb-5' : 'max-h-0'
                     }`}
             >
-                <p className="text-sm text-muted leading-relaxed">{answer}</p>
+                <p className="text-sm text-[#C8A96E] leading-relaxed font-serif">{answer}</p>
             </div>
         </div>
     );
@@ -63,23 +62,23 @@ function FAQItem({ question, answer }) {
 
 export default function FAQSection() {
     return (
-        <section id="faq" className="py-24 lg:py-32 bg-background">
+        <section id="faq" className="py-24 lg:py-32">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Label */}
                 <div className="flex items-center justify-center gap-3 mb-4">
-                    <div className="w-8 h-0.5 bg-primary" />
-                    <span className="text-xs font-mono font-semibold tracking-widest text-primary uppercase">
-                        Knowledge Base
+                    <div className="w-8 h-0.5 bg-[#FFD700]" />
+                    <span className="text-xs font-cinzel font-semibold tracking-widest text-[#FFD700] uppercase">
+                        Archive of Inquiries
                     </span>
-                    <div className="w-8 h-0.5 bg-primary" />
+                    <div className="w-8 h-0.5 bg-[#FFD700]" />
                 </div>
 
-                <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white text-center mb-16">
+                <h2 className="text-4xl sm:text-5xl font-cinzel font-black tracking-tight text-[#FFD700] text-center mb-16 drop-shadow-[0_0_15px_rgba(255,215,0,0.3)]">
                     FREQUENTLY ASKED
                 </h2>
 
-                {/* FAQ Items */}
-                <div className="bg-card rounded-2xl border border-border px-6 sm:px-8 mb-10">
+                {/* FAQ Items — parchment container */}
+                <div className="parchment-card rounded-2xl border border-[#5a3e10] px-6 sm:px-8 mb-10">
                     {faqs.map((faq) => (
                         <FAQItem key={faq.question} {...faq} />
                     ))}
@@ -87,12 +86,12 @@ export default function FAQSection() {
 
                 {/* Contact support */}
                 <div className="text-center">
-                    <p className="text-sm text-muted mb-4">
-                        Still have questions? Reach out to our team directly.
+                    <p className="text-sm text-[#A08040] mb-4 font-serif">
+                        Still have questions? Reach out to our council directly.
                     </p>
                     <a
                         href="mailto:hello@codecrafters.in"
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg text-sm font-semibold text-muted hover:border-primary hover:text-primary transition-all duration-200"
+                        className="scroll-btn inline-flex"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

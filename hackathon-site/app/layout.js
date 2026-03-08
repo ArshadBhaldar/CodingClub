@@ -1,12 +1,12 @@
 import './globals.css';
 
 export const metadata = {
-    title: 'CodeCrafters Hackathon 2026 — Build. Innovate. Disrupt.',
+    title: 'CodeCrafters Hackathon 2026 — The Arcane Code Sprint',
     description:
-        'Join the ultimate 24-hour code sprint at CodeCrafters Hackathon 2026. Build the future of digital architecture — Oct 14-15, Navi Mumbai.',
+        'Enter the realm of arcane innovation. Join the CodeCrafters Hackathon 2026 — a 24-hour magical code sprint in Navi Mumbai, Oct 14-15.',
     openGraph: {
-        title: 'CodeCrafters Hackathon 2026',
-        description: 'Build. Innovate. Disrupt. Join the ultimate 24-hour code sprint.',
+        title: 'CodeCrafters Hackathon 2026 — The Arcane Code Sprint',
+        description: 'Build. Innovate. Disrupt. A magical 24-hour hackathon.',
         type: 'website',
     },
 };

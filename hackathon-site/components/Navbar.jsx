@@ -14,18 +14,16 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-[#4A3000]"
+            style={{ background: 'rgba(13,9,0,0.85)' }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 group">
-                        <div className="w-7 h-7 bg-primary rounded flex items-center justify-center flex-shrink-0 group-hover:shadow-glow-sm transition-shadow duration-300">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M2 4L6 8L2 12" stroke="#0B0B0E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M8 12H14" stroke="#0B0B0E" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        </div>
-                        <span className="font-bold text-white text-sm tracking-wider">CODECRAFTERS</span>
+                        <span className="text-[#FFD700] text-lg" aria-hidden="true">⚡</span>
+                        <span className="font-cinzel font-bold text-[#FFD700] text-sm tracking-widest group-hover:text-[#FFF0A0] transition-colors duration-300">
+                            CODECRAFTERS
+                        </span>
                     </Link>
 
                     {/* Desktop nav links */}
@@ -34,27 +32,33 @@ export default function Navbar() {
                             <a
                                 key={link.label}
                                 href={link.href}
-                                className="text-xs font-semibold tracking-widest text-muted hover:text-primary transition-colors duration-200"
+                                className="text-xs font-cinzel font-semibold tracking-widest text-[#A08040] hover:text-[#FFD700] transition-colors duration-200"
                             >
                                 {link.label}
                             </a>
                         ))}
                     </div>
 
-                    {/* Login button */}
-                    <div className="hidden md:block">
+                    {/* CTA buttons */}
+                    <div className="hidden md:flex items-center gap-3">
                         <a
                             href="#"
-                            className="px-4 py-2 text-xs font-semibold tracking-widest border border-border rounded text-muted hover:border-primary hover:text-primary transition-all duration-200"
+                            className="px-4 py-2 text-xs font-cinzel font-semibold tracking-widest border border-[#4A3000] rounded text-[#A08040] hover:border-[#FFD700] hover:text-[#FFD700] transition-all duration-200"
                         >
                             LOGIN
+                        </a>
+                        <a
+                            href="#"
+                            className="scroll-btn text-xs py-2 px-5"
+                        >
+                            JOIN CREST
                         </a>
                     </div>
 
                     {/* Mobile hamburger */}
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
-                        className="md:hidden text-muted hover:text-primary transition-colors p-1"
+                        className="md:hidden text-[#A08040] hover:text-[#FFD700] transition-colors p-1"
                         aria-label="Toggle menu"
                     >
                         <div className={`w-6 h-0.5 bg-current transition-all duration-300 mb-1.5 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -66,23 +70,22 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             <div
-                className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-80 border-b border-border' : 'max-h-0'
-                    }`}
+                className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-80 border-b border-[#4A3000]' : 'max-h-0'}`}
             >
-                <div className="px-4 py-4 bg-card flex flex-col gap-4">
+                <div className="px-4 py-4 flex flex-col gap-4" style={{ background: 'rgba(13,9,0,0.95)' }}>
                     {navLinks.map((link) => (
                         <a
                             key={link.label}
                             href={link.href}
                             onClick={() => setMenuOpen(false)}
-                            className="text-xs font-semibold tracking-widest text-muted hover:text-primary transition-colors duration-200 py-1"
+                            className="text-xs font-cinzel font-semibold tracking-widest text-[#A08040] hover:text-[#FFD700] transition-colors duration-200 py-1"
                         >
                             {link.label}
                         </a>
                     ))}
                     <a
                         href="#"
-                        className="px-4 py-2 text-xs font-semibold tracking-widest border border-border rounded text-muted hover:border-primary hover:text-primary transition-all duration-200 text-center mt-2"
+                        className="px-4 py-2 text-xs font-cinzel font-semibold tracking-widest border border-[#4A3000] rounded text-[#A08040] hover:border-[#FFD700] hover:text-[#FFD700] transition-all duration-200 text-center mt-2"
                     >
                         LOGIN
                     </a>
