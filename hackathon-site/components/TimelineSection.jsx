@@ -1,15 +1,15 @@
 const milestones = [
     {
-        date: 'SEP 01 — SEP 15',
+        date: 'FEB 15 — MAR 07',
         status: 'COMPLETED',
         title: 'REGISTRATION OPENS',
         description:
-            'Secure your spot and build your team profile. Early bird perks for the first 50 teams.',
+            'Secure your spot and build your team profile. Early bird perks for the first 50 teams to register.',
         dotColor: '#4CAF50',
         dateColor: 'text-green-400',
     },
     {
-        date: 'OCT 01 | 23:59 IST',
+        date: 'MAR 10 | 23:59 IST',
         status: 'UPCOMING',
         title: 'SUBMISSION OF INTENT',
         description:
@@ -18,20 +18,20 @@ const milestones = [
         dateColor: 'text-[#FFD700]',
     },
     {
-        date: 'OCT 05',
+        date: 'MAR 12',
         status: 'UPCOMING',
         title: 'THE CHOSEN FORTY',
         description:
-            'The top 40 teams will be invited for the offline hackathon. Check your email for status.',
+            'The top 40 teams will be invited for the offline hackathon at SCOE Kharghar. Check your email for status.',
         dotColor: '#4A3000',
         dateColor: 'text-[#A08040]',
     },
     {
-        date: 'OCT 14 - 15',
+        date: 'MAR 14 - 15',
         status: 'UPCOMING',
         title: 'THE GRAND FINALE',
         description:
-            '24 hours of nonstop arcane manifestation at our tech campus. Meals, mentors, and caffeine provided.',
+            '24 hours of nonstop arcane manifestation at SCOE, Kharghar, Navi Mumbai. Meals, mentors, and caffeine provided.',
         dotColor: '#4A3000',
         dateColor: 'text-[#A08040]',
     },
@@ -89,7 +89,12 @@ export default function TimelineSection() {
                                     <div className="relative z-10 flex-shrink-0">
                                         <div
                                             className="w-7 h-7 rounded-full border-2 border-[#0D0900] flex items-center justify-center"
-                                            style={{ background: m.dotColor, boxShadow: m.status === 'COMPLETED' ? '0 0 8px rgba(76,175,80,0.7)' : m.status === 'UPCOMING' && i === 1 ? '0 0 8px rgba(255,215,0,0.6)' : 'none' }}
+                                            style={{
+                                                background: m.dotColor,
+                                                boxShadow: m.status === 'COMPLETED'
+                                                    ? '0 0 8px rgba(76,175,80,0.7)'
+                                                    : i === 1 ? '0 0 8px rgba(255,215,0,0.6)' : 'none'
+                                            }}
                                         >
                                             {m.status === 'COMPLETED' && (
                                                 <svg className="w-3 h-3 text-[#0D0900]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

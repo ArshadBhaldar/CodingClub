@@ -61,7 +61,7 @@ export default function HeroSection() {
                                 <span className="text-[#FFD700]" aria-hidden="true">📅</span>
                                 <div>
                                     <p className="text-xs text-[#6B5030] tracking-widest font-cinzel font-semibold">DATE</p>
-                                    <p className="text-sm text-[#F5E6C8] font-bold font-cinzel">OCT 14-15, 2026</p>
+                                    <p className="text-sm text-[#F5E6C8] font-bold font-cinzel">MAR 14-15, 2026</p>
                                 </div>
                             </div>
 
@@ -71,7 +71,7 @@ export default function HeroSection() {
                                 <span className="text-[#FFD700]" aria-hidden="true">🏰</span>
                                 <div>
                                     <p className="text-xs text-[#6B5030] tracking-widest font-cinzel font-semibold">VENUE</p>
-                                    <p className="text-sm text-[#F5E6C8] font-bold font-cinzel">NAVI MUMBAI, IN</p>
+                                    <p className="text-sm text-[#F5E6C8] font-bold font-cinzel">SCOE KHARGHAR, NAVI MUMBAI</p>
                                 </div>
                             </div>
 
