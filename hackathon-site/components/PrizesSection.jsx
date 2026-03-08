@@ -27,7 +27,7 @@ const prizes = [
         shadow: 'rgba(192,57,43,0.5)',
         iconColor: '#FFD700',
         elevated: true,
-        icon: ChaliceIcon,
+        Icon: ChaliceIcon,
     },
     {
         rank: '2ND PRIZE WINNER',
@@ -38,7 +38,7 @@ const prizes = [
         shadow: 'rgba(30,64,175,0.3)',
         iconColor: '#60a5fa',
         elevated: false,
-        icon: ChaliceIcon,
+        Icon: ChaliceIcon,
     },
     {
         rank: '3RD PRIZE WINNER',
@@ -49,7 +49,7 @@ const prizes = [
         shadow: 'rgba(0,150,50,0.3)',
         iconColor: '#4ade80',
         elevated: false,
-        icon: ChaliceIcon,
+        Icon: ChaliceIcon,
     },
     {
         rank: 'WINNER CERTIFICATES',
@@ -60,7 +60,7 @@ const prizes = [
         shadow: 'rgba(90,62,16,0.4)',
         iconColor: '#FFD700',
         elevated: false,
-        icon: ScrollIcon,
+        Icon: ScrollIcon,
     },
 ];
 
@@ -84,75 +84,83 @@ export default function PrizesSection() {
                 {/* Prize cards — top 3 in a row, 4th centred below */}
                 <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-end">
-                        {prizes.slice(0, 3).map((prize) => (
-                            <div
-                                key={prize.rank}
-                                className={`velvet-card relative rounded-2xl overflow-hidden p-8 flex flex-col items-center text-center transition-all duration-300 ${prize.elevated ? 'md:-mt-8' : ''}`}
-                                style={{
-                                    background: prize.bg,
-                                    border: `1px solid ${prize.border}`,
-                                    boxShadow: `0 8px 32px ${prize.shadow}, 0 0 0 1px ${prize.border}40`,
-                                }}
-                            >
-                                {/* Top shimmer */}
-                                <div className="absolute inset-x-0 top-0 h-16 opacity-20"
-                                    style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)' }}
-                                    aria-hidden="true"
-                                />
-                                <prize.icon
-                                    className="relative z-10 w-12 h-12 mb-5"
-                                    style={{ color: prize.iconColor, filter: prize.elevated ? 'drop-shadow(0 0 8px rgba(255,215,0,0.8))' : 'none' }}
-                                />
-                                <p className="relative z-10 text-xs font-cinzel font-bold tracking-widest text-white/60 mb-2">
-                                    {prize.rank}
-                                </p>
-                                <p className={`relative z-10 font-cinzel font-black text-white mb-5 ${prize.elevated ? 'text-4xl' : 'text-3xl'}`}>
-                                    {prize.amount}
-                                </p>
-                                <div className="relative z-10 flex flex-col gap-1.5 w-full">
-                                    {prize.perks.map((perk, i) => (
-                                        <p key={i} className="text-xs text-white/70 font-serif">{perk}</p>
-                                    ))}
-                                </div>
-                                {prize.elevated && (
-                                    <div className="relative z-10 mt-4 text-[#FFD700] text-lg tracking-widest animate-flicker">
-                                        ✦ ✦ ✦
+                        {prizes.slice(0, 3).map((prize) => {
+                            const Icon = prize.Icon;
+                            return (
+                                <div
+                                    key={prize.rank}
+                                    className={`velvet-card relative rounded-2xl overflow-hidden p-8 flex flex-col items-center text-center transition-all duration-300 ${prize.elevated ? 'md:-mt-8' : ''}`}
+                                    style={{
+                                        background: prize.bg,
+                                        border: `1px solid ${prize.border}`,
+                                        boxShadow: `0 8px 32px ${prize.shadow}, 0 0 0 1px ${prize.border}40`,
+                                    }}
+                                >
+                                    <div className="absolute inset-x-0 top-0 h-16 opacity-20"
+                                        style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 70%)' }}
+                                        aria-hidden="true"
+                                    />
+                                    <Icon
+                                        className="relative z-10 w-12 h-12 mb-5"
+                                        style={{ color: prize.iconColor, filter: prize.elevated ? 'drop-shadow(0 0 8px rgba(255,215,0,0.8))' : 'none' }}
+                                    />
+                                    <p className="relative z-10 text-xs font-cinzel font-bold tracking-widest text-white/60 mb-2">
+                                        {prize.rank}
+                                    </p>
+                                    <p className={`relative z-10 font-cinzel font-black text-white mb-5 ${prize.elevated ? 'text-4xl' : 'text-3xl'}`}>
+                                        {prize.amount}
+                                    </p>
+                                    <div className="relative z-10 flex flex-col gap-1.5 w-full">
+                                        {prize.perks.map((perk, i) => (
+                                            <p key={i} className="text-xs text-white/70 font-serif">{perk}</p>
+                                        ))}
                                     </div>
-                                )}
-                            </div>
-                        ))}
+                                    {prize.elevated && (
+                                        <div className="relative z-10 mt-4 text-[#FFD700] text-lg tracking-widest animate-flicker">
+                                            ✦ ✦ ✦
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
 
                     {/* 4th prize — certificates, centred */}
                     <div className="flex justify-center">
-                        <div
-                            className="velvet-card relative rounded-2xl overflow-hidden p-8 flex flex-col items-center text-center w-full md:max-w-sm transition-all duration-300"
-                            style={{
-                                background: prizes[3].bg,
-                                border: `1px solid ${prizes[3].border}`,
-                                boxShadow: `0 8px 32px ${prizes[3].shadow}`,
-                            }}
-                        >
-                            <div className="absolute inset-x-0 top-0 h-16 opacity-10"
-                                style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.3) 0%, transparent 70%)' }}
-                                aria-hidden="true"
-                            />
-                            <prizes[3].icon
-                            className="relative z-10 w-10 h-10 mb-4"
-                            style={{ color: prizes[3].iconColor }}
-                            />
-                            <p className="relative z-10 text-xs font-cinzel font-bold tracking-widest text-white/60 mb-2">
-                                {prizes[3].rank}
-                            </p>
-                            <p className="relative z-10 font-cinzel font-black text-white text-2xl mb-4">
-                                {prizes[3].amount}
-                            </p>
-                            <div className="relative z-10 flex flex-col gap-1.5 w-full">
-                                {prizes[3].perks.map((perk, i) => (
-                                    <p key={i} className="text-xs text-white/70 font-serif">{perk}</p>
-                                ))}
-                            </div>
-                        </div>
+                        {(() => {
+                            const cert = prizes[3];
+                            const CertIcon = cert.Icon;
+                            return (
+                                <div
+                                    className="velvet-card relative rounded-2xl overflow-hidden p-8 flex flex-col items-center text-center w-full md:max-w-sm transition-all duration-300"
+                                    style={{
+                                        background: cert.bg,
+                                        border: `1px solid ${cert.border}`,
+                                        boxShadow: `0 8px 32px ${cert.shadow}`,
+                                    }}
+                                >
+                                    <div className="absolute inset-x-0 top-0 h-16 opacity-10"
+                                        style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.3) 0%, transparent 70%)' }}
+                                        aria-hidden="true"
+                                    />
+                                    <CertIcon
+                                        className="relative z-10 w-10 h-10 mb-4"
+                                        style={{ color: cert.iconColor }}
+                                    />
+                                    <p className="relative z-10 text-xs font-cinzel font-bold tracking-widest text-white/60 mb-2">
+                                        {cert.rank}
+                                    </p>
+                                    <p className="relative z-10 font-cinzel font-black text-white text-2xl mb-4">
+                                        {cert.amount}
+                                    </p>
+                                    <div className="relative z-10 flex flex-col gap-1.5 w-full">
+                                        {cert.perks.map((perk, i) => (
+                                            <p key={i} className="text-xs text-white/70 font-serif">{perk}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        })()}
                     </div>
                 </div>
             </div>
